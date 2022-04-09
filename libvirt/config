@@ -1,0 +1,27 @@
+Host master
+        HostName 192.168.121.87
+        User ren
+        port 22
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes
+
+Host node01
+        HostName 192.168.121.236
+        User ren
+        port 22
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes
+
+Host node02
+        HostName 127.0.0.1
+        User ren
+        port 22
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes
+
+Host node03
+        HostName 127.0.0.1
+        User ren
+        port 22
+        IdentityFile ~/.ssh/id_rsa
+        IdentitiesOnly yes

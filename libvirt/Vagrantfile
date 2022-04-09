@@ -1,0 +1,58 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+    config.vm.boot_timeout = 600
+  
+    config.vm.define :master do |master|
+        DefineMachineEnvironment master, "8", "16384"
+        master.vm.hostname = "master"
+        master.vm.box = "generic/ubuntu2004"
+        master.vm.network :public_network,
+                :ip => "10.0.100.10",
+                :bridge => "enp3s0",
+                :dev => "enp3s0"
+        master.vm.provision :shell, path: "provision/master.sh"
+    end
+    
+    config.vm.define :node01 do |node01|
+        DefineMachineEnvironment node01, "8", "16384"
+        node01.vm.hostname = "node01"
+        node01.vm.box = "generic/ubuntu2004"
+        node01.vm.network :public_network,
+                :ip => "10.0.100.11",
+                :bridge => "enp3s0",
+                :dev => "enp3s0"
+        node01.vm.provision :shell, path: "provision/node.sh"
+    end
+    
+    config.vm.define :node02 do |node02|
+        DefineMachineEnvironment node02, "8", "16384"
+        node02.vm.hostname = "node02"
+        node02.vm.box = "generic/ubuntu2004"
+        node02.vm.network :public_network,
+                :ip => "10.0.100.12",
+                :bridge => "enp3s0",
+                :dev => "enp3s0"
+        node02.vm.provision :shell, path: "provision/node.sh"
+    end
+
+    config.vm.define :node03 do |node03|
+        DefineMachineEnvironment node03, "8", "16384"
+        node03.vm.hostname = "node03"
+        node03.vm.box = "generic/ubuntu2004"
+        node03.vm.network :public_network,
+                :ip => "10.0.100.13",
+                :bridge => "enp3s0",
+                :dev => "enp3s0"
+        node03.vm.provision :shell, path: "provision/node.sh"
+    end
+
+    ## Define macros
+    def DefineMachineEnvironment(tmp, use_cpu, use_memory)
+        tmp.vm.provider :libvirt do |libvirt|
+            libvirt.cpus   = use_cpu
+            libvirt.memory = use_memory
+        end
+    end
+end
