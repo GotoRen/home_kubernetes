@@ -64,6 +64,6 @@ This project is intended to be a safe, welcoming space for collaboration, and co
 
 Everyone interacting in this project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](./CODE_OF_CONDUCT.md).
 
-## License
+## LICENSE
 
 Released under the [MIT License](./LICENSE).
